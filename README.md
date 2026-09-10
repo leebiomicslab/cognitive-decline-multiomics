@@ -7,9 +7,8 @@
 
 This repository contains the analysis code used to generate the computational results reported in the manuscript:
 
-> **[Manuscript title — to be updated upon acceptance]**  
-> *[Authors — to be updated upon acceptance]*  
-> *Nature Aging* (submitted/under review)
+> *Authors: to be updated with the manuscript record*  
+> *Manuscript in preparation*
 
 The study identified three cognitive phenotypes (C1/C2/C3) in an aging cohort using MoCA subtest profiling, then integrated plasma proteomics, gut microbiome composition, and targeted metabolomics to characterize phenotype-specific multi-omics signatures. The repository includes downstream characterization and analysis of precomputed cognitive phenotype assignments, together with covariate-adjusted omics analyses, network analyses, classification, CISS construction and serial mediation. Note that the original K-means cluster-generation script was not retained; precomputed group assignments (`k-means_3group.csv`) are a required restricted upstream input and are not included in the public repository.
 
@@ -272,7 +271,7 @@ Individual figure scripts are in `scripts/10_figure_generation/`. See [docs/MANU
 ## Data Availability
 
 This code repository does **not** constitute a data repository.
-Participant-level proteomics, microbiome, and clinical data from this study are not deposited in a public repository due to IRB and patient privacy restrictions.
+Participant-level proteomics, microbiome, and clinical data from this study are not deposited in a public repository due to IRB and participant privacy restrictions.
 Researchers wishing to access the data should contact the corresponding author. Data sharing is subject to institutional data use agreements.
 
 ---

@@ -69,7 +69,7 @@ E0002,C2,72,2,9,26.1,0,1,1,1,0,2.1,65.8,1,1,1,0,0,0
 
 Participant-level clinical data, proteomics matrices, and microbiome tables
 from this study **are not deposited in a public repository** at this time,
-due to IRB restrictions and patient privacy requirements.
+due to IRB restrictions and participant privacy requirements.
 
 Researchers interested in accessing the data for replication should contact the
 corresponding author. Data may be shared under a data use agreement following
