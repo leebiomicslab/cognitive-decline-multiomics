@@ -1,0 +1,55 @@
+name: nature_aging_multiomics
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+
+dependencies:
+  # Core Python
+  - python=3.10
+
+  # Data science
+  - numpy>=1.24
+  - pandas>=2.0
+  - scipy>=1.10
+
+  # Machine learning
+  - scikit-learn>=1.3
+
+  # Statistical modelling
+  - statsmodels>=0.14
+
+  # Visualisation
+  - matplotlib>=3.7
+  - seaborn>=0.12
+
+  # Network analysis
+  - networkx>=3.1
+
+  # Community detection (Python bindings for igraph + leidenalg)
+  - python-igraph>=0.10
+  - leidenalg>=0.10
+
+  # Bioinformatics / CLR
+  - biom-format           # optional; for QIIME2-exported tables
+
+  # Excel / IO
+  - openpyxl>=3.1
+
+  # Text annotation helper used in some proteomics plots
+  - adjusttext>=0.8
+
+  pip:
+    # adjusttext is sometimes only available via pip
+    - adjusttext>=0.8
+
+# ─── Notes ────────────────────────────────────────────────────
+# R environment (ANCOM-BC2 / ALDEx2) is managed separately.
+# See environment/R_environment.md.
+#
+# FastSpar is a standalone binary; see environment/R_environment.md
+# for installation instructions.
+#
+# To create this environment:
+#   conda env create -f environment.yml
+#   conda activate nature_aging_multiomics

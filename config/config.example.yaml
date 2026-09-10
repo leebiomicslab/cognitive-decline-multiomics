@@ -1,0 +1,81 @@
+# config.example.yaml
+# ============================================================
+# Example configuration for the multi-omics analysis pipeline.
+# Copy this file to config.yaml and update paths to match
+# your local data directory layout.
+# ============================================================
+
+# ----- Project root -----
+project_dir: /path/to/your/project/root
+
+# ----- Data files -----
+data:
+  # Participant-level clinical variables
+  # Column layout: id, age, gender, edu, bmi, smoking, alcohol, HTN, DM, CVD, CRP, egfr, [moca_1, ...]
+  clinical_csv:       data/clinical_merged_371.csv
+
+  # Medication data file (Excel).
+  # Required columns: id, Statin, dm_med, htn_med, chol_med, PPI, Antibiotics
+  medication_xlsx:    data/vascular_with_medication.xlsx
+
+  # K-means phenotype assignments — see data/README.md for schema
+  group_csv:          data/k-means_3group.csv
+
+  # Common multi-omics sample IDs (samples present in proteomics AND microbiome)
+  common_samples_csv: results/common_samples.csv
+
+  # Proteomics: log2-transformed, protein × sample matrix (participant-level)
+  proteomics_log2:    data/PROTEOMICS/data_log2_mapping_deduplicated.csv
+
+  # Microbiome: genus-level raw count table (genus × sample)
+  microbiome_genus_counts: data/MICROBIOTA/asv_genus_table.csv
+  microbiome_genus_reads:  data/MICROBIOTA/asv_genus_table_reads.csv
+
+  # Metabolomics: feature × sample matrix (log2-transformed or raw)
+  metabolomics_csv:   data/METABOLITE/clean_metabolite_matrix_all_features_final_v4.csv
+
+# ----- Network analysis (FastSpar outputs) -----
+fastspar:
+  microbiome_dir:     results/fastspar/microbiota
+  proteomics_dir:     results/fastspar/proteomics
+
+# ----- Analysis parameters -----
+#  !! Do NOT change these values unless replicating a different analysis !!
+#  !! All parameters below correspond to those reported in the manuscript !!
+params:
+  kmeans_k: 3                    # Number of cognitive phenotype clusters
+  random_seed: 42
+
+  psm:
+    covariates: [age, gender, edu, bmi, smoking, alcohol, HTN, DM, CVD]
+
+  proteomics:
+    p_threshold: 0.05            # Nominal significance threshold (omnibus F-test)
+    fdr_method: fdr_bh           # Benjamini-Hochberg
+
+  microbiome:
+    prevalence_threshold: 0.10   # 10% prevalence filter for DA analysis
+    aldex2_mc_samples: 128
+    p_threshold: 0.05
+
+  network:
+    protein_leiden_resolution: 1.0
+    microbiome_leiden_resolution: 1.1   # NOTE: verify against results/fastspar/microbiota/
+    leiden_seed: 42
+    min_edge_weight: 0.3         # |r| threshold for figure display
+
+  classification:
+    outer_splits: 5              # Repeated nested CV — 5-fold × 20 repeats (see script docstring)
+    outer_repeats: 20
+    inner_splits: 4
+    sign_consistency_threshold: [0.85, 0.90, 0.95]   # hyperparameter search grid
+
+  mediation:
+    n_bootstrap: 5000
+    seed: 42
+
+# ----- Output directories -----
+output:
+  results_dir:        results
+  figures_dir:        results/figures
+  tables_dir:         results/tables

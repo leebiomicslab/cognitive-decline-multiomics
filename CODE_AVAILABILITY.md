@@ -1,0 +1,7 @@
+# Code Availability
+
+Custom code used for the principal downstream statistical, network, machine-learning and mediation analyses in this study is available at GitHub ([**REPOSITORY URL — TO BE ADDED**]). The repository includes code for covariate-adjusted proteomic and microbiome analyses, network characterization, pairwise classification, construction of the Cognitive Impairment Signature Scores (CISS), and serial mediation analyses, together with software dependencies and input specifications. FastSpar correlation estimation was performed on an institutional computing server; server-specific execution scripts are not distributed, whereas downstream network-analysis code and expected FastSpar input/output specifications are provided. Participant-level study data are not included in the public repository and remain subject to institutional ethics and data-access requirements.
+
+---
+
+> **Note:** Update `[**REPOSITORY URL — TO BE ADDED**]` with the actual GitHub URL before publication.

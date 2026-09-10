@@ -1,0 +1,113 @@
+# .gitignore for nature_aging_code_release
+# ============================================================
+# This repository contains ONLY analysis code.
+# Participant-level data must NEVER be committed.
+# ============================================================
+
+# ── Restricted participant data ───────────────────────────────
+data/raw/
+data/private/
+data/clinical/
+data/PROTEOMICS/*.csv
+data/MICROBIOTA/*.csv
+data/MICROBIOTA/*.tsv
+data/METABOLITE/*.csv
+data/METABOLITE/*.xlsx
+
+# Exclude any Excel files that could contain participant data
+*.sav
+*.sas7bdat
+*.dta
+
+# Specifically exclude known sensitive files by name pattern
+*clinical*.csv
+*vascular*.csv
+*vascular*.xlsx
+*medication*.xlsx
+*k-means*.csv
+*matched_psm*.csv
+*common_samples*.csv
+*metabolite_matrix*.csv
+*mapping_deduplicated*.csv
+*mapping_updated*.csv
+clean_metabolite_matrix*.csv
+
+# ── Credentials and configuration ────────────────────────────
+.env
+*.env
+config/config.yaml        # Only example is committed; not the real config
+config/paths.py           # Only paths.example.py is committed
+*.key
+*.pem
+credentials/
+google_credentials*.json
+service_account*.json
+
+# ── Python artifacts ──────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+dist/
+build/
+*.whl
+.Python
+venv/
+.venv/
+env/
+
+# ── R artifacts ───────────────────────────────────────────────
+.Rhistory
+.RData
+.Rproj.user/
+*.Rout
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── IDE / OS ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Large intermediate results (>100 MB) ─────────────────────
+# GraphML files are committed if they are NOT participant-level data.
+# Comment out the lines below if you intend to commit specific result files.
+results/modeling/classification/**/fold_metrics.csv
+results/modeling/sequential_mediation_all_metabolites_raw.csv
+results/modeling/sequential_mediation_all_metabolites_rint.csv
+
+# ── Temporary files ───────────────────────────────────────────
+tmp_*.py
+tmp_*.txt
+tmp_*.csv
+scratch_*.py
+*.tmp
+*.log
+error.log
+
+# ── Confidential documents ────────────────────────────────────
+MANUSCRIPT*.docx
+MANUSCRIPT*.pdf
+SUPPLEMENTARY*.docx
+SUPPLEMENTARY*.pdf
+*.pptx
+*.enl
+*.enlx
+*.zip
+
+# ── Do NOT exclude (explicitly allow) ────────────────────────
+# The following CSV/TSV files are safe to commit because they contain
+# only non-sensitive intermediate results:
+# results/fastspar/microbiota/microbiome_ME_ALL*.csv
+# results/fastspar/microbiota/microbiome_ME_ALL*_loadings*.csv
+# results/psm/psm_balance_summary.txt
+# results/common_samples.csv   <-- contains only de-identified IDs
+#
+# NOTE: common_samples.csv contains only anonymous participant IDs (e.g. E0001).
+# Confirm with your IRB whether these IDs alone are identifiable before committing.

@@ -1,0 +1,19 @@
+# Python requirements (pip-installable subset)
+# Generated from the active environment used for this analysis.
+# For full reproducibility, prefer environment.yml (conda).
+#
+# To install:
+#   pip install -r requirements.txt
+
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+statsmodels>=0.14
+matplotlib>=3.7
+seaborn>=0.12
+networkx>=3.1
+python-igraph>=0.10
+leidenalg>=0.10
+openpyxl>=3.1
+adjusttext>=0.8
